@@ -32,32 +32,28 @@ public class MainActivity extends AppCompatActivity {
                 String isian_nama_depan = edNamaDepan.getText().toString();
                 String isian_nama_belakang = edNamaBelakang.getText().toString();
 
-                if(isian_nama_depan.isEmpty()){
+                if (isian_nama_depan.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Isian masih kosong", Toast.LENGTH_SHORT).show();
-                }else{
-                    String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
-                    daftar_nama.clear();
-                    daftar_nama.add(nama_lengkap);
-                    ArrayList<String>
-                            daftar_nama_with_index = new ArrayList<>();
-                    for (int i = 0; i < daftar_nama.size(); i++){
-                        String item_with_index_ = i + ":" + daftar_nama.get(i);
-                        daftar_nama_with_index.add(item_with_index_);
+                } else {
+                    StringBuilder nama_lengkap = new StringBuilder(isian_nama_depan);
+                    if (!isian_nama_belakang.isEmpty()) {
+                        nama_lengkap.append(" ").append(isian_nama_belakang);
                     }
+
+                    ArrayList<String> daftar_nama = new ArrayList<>();
+                    for (int i = 1; i <= 20; i++) {
+                        if (i % 2 == 0) {
+                            // Skip even numbers
+                            continue;
+                        }
+                        daftar_nama.add(nama_lengkap.toString() + " - " + i);
+                    }
+
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
                     intent_list.putStringArrayListExtra("daftar_nama", daftar_nama);
                     startActivity(intent_list);
-                    int n = 1;
-                    String num = "1";
-                    for (int i=0; i<20; i++) {
-                        n++;
-                        num = num + "\n " + String.valueOf(n);
-                        if ( i % 2 != 0);
-                    }
-
                 }
             }
         });
-    }
-}
+    }}
