@@ -38,10 +38,24 @@ public class MainActivity extends AppCompatActivity {
                     String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
                     daftar_nama.clear();
                     daftar_nama.add(nama_lengkap);
+                    ArrayList<String>
+                            daftar_nama_with_index = new ArrayList<>();
+                    for (int i = 0; i < daftar_nama.size(); i++){
+                        String item_with_index_ = i + ":" + daftar_nama.get(i);
+                        daftar_nama_with_index.add(item_with_index_);
+                    }
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
                     intent_list.putStringArrayListExtra("daftar_nama", daftar_nama);
                     startActivity(intent_list);
+                    int n = 1;
+                    String num = "1";
+                    for (int i=0; i<20; i++) {
+                        n++;
+                        num = num + "\n " + String.valueOf(n);
+                        if ( i % 2 != 0);
+                    }
+
                 }
             }
         });
